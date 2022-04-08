@@ -26,14 +26,17 @@ namespace Atividade_1
             string metodo = EscolherMetodo();
             var sw = new Stopwatch();
             long[] listaOrd = Array.Empty<long>();
+            string mString = "";
             if (metodo == "1")
             {
+                mString = "selectionSort";
                 sw.Start();
                 listaOrd = SelectionSort.Sort(listaNum);
                 sw.Stop();
             }
             else if (metodo == "2")
             {
+                mString = "insertionSort";
                 sw.Start();
                 listaOrd = InsertionSort.Sort(listaNum);
                 sw.Stop();
@@ -43,7 +46,7 @@ namespace Atividade_1
             string[] listaOrdStr = Array.ConvertAll(listaOrd, Convert.ToString);
             var nomeArquivo = new DirectoryInfo(arquivo).Name;
             string pasta = "output";
-            string fullPath = pasta + "/" + nomeArquivo;
+            string fullPath = pasta + "/" + mString + "-" + sw.ElapsedMilliseconds + "ms-" + nomeArquivo;
             if (!Directory.Exists(pasta))
             {
                 Directory.CreateDirectory(pasta);
