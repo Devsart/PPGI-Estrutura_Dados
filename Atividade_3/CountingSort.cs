@@ -10,10 +10,25 @@ namespace Atividade_3
     {
         public static long[] Sort(long[] lista)
         {
-            // Encontrando valor máximo
+            // Encontrando valor máximo e minimo
             int n = lista.Length;
-            long max = 0;
-            for (int i = 0; i < n; i++)
+            long max = lista[0];
+            long min = lista[0];
+            for (int i = 1; i < n; i++)
+            {
+                if (min > lista[i])
+                {
+                    min = lista[i];
+                }
+            }
+            if (min < 0)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    lista[i] -= min;
+                }
+            }
+            for (int i = 1; i < n; i++)
             {
                 if (max < lista[i])
                 {
@@ -35,6 +50,13 @@ namespace Atividade_3
                     lista[j] = i;
                     j++;
                     arr_freq[i]--;
+                }
+            }
+            if (min < 0)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    lista[i] += min;
                 }
             }
             return lista;
