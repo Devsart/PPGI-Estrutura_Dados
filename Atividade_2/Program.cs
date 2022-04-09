@@ -72,18 +72,5 @@ namespace Atividade_2
                 return EscolherMetodo();
             }
         }
-        static void VerificarLista(long[] lista)
-        {
-            int marker = 0;
-            for (int i = 0; i <= lista.Length - 2; i++)
-            {
-                if (lista[i + 1] < lista[i])
-                {
-                    Console.WriteLine("A ordenacao contem erro na posicao {0}", i);
-                    marker++;
-                }
-            }
-            Console.WriteLine("A lista contém {0} erros.", marker);
-        }
     }
 }
