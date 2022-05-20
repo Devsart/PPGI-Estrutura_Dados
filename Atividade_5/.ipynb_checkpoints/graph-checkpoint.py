@@ -17,7 +17,8 @@ class Graph:
                     if i == 0:
                         n = int(linha)
                     else:
-                        pesos = re.split("\t| ",linha.strip())
+                        pesos = linha.strip()
+                        pesos = re.split("\t| ",pesos)
                         for j in range(i,n):
                              f2.write(f'{i} {j+1} {pesos[j-i]}\n')
             with open('temp','r') as f2:
@@ -106,36 +107,4 @@ class Graph:
 
         return ArvMin
     
-    def find(vertice):
-        if subgrupo[vertice] != vertice: 
-            subgrupo[vertice] = find(subgrupo[vertice]) 
-        return subgrupo[vertice]
-
-    def union(vertice1, vertice2):
-        v1_rotulo = find(vertice1)
-        v2_rotulo = find(vertice2)
-
-        if v1_rotulo != v2_rotulo:
-            if classif[v1_rotulo] > classif[v2_rotulo]: # Balanceando os subconjuntos
-                subgrupo[v2_rotulo] = v1_rotulo
-                classif[v1_rotulo] += classif[v2_rotulo]
-            else:
-                subgrupo[v1_rotulo] = v2_rotulo
-                classif[v2_rotulo] += classif[v1_rotulo]
-
-
-    def kruskal(grafo, vertices, k_clusters):
-        ArvMin = list()
-
-        clusters = len(vertices)
-
-        for aresta in grafo:
-            peso, vertice1, vertice2 = aresta
-            if clusters <= k_clusters: # Verifica se existem k subconjuntos (evita problema caso K seja maior que o possivel de subconjuntos)
-                break
-
-            if find(vertice1) != find(vertice2): #Caso nao pertencerem ao mesmo subconjunto, une os vertices, adiciona a ArvMin e ajusta o contador de conjuntos
-                union(vertice1, vertice2)
-                ArvMin.append(aresta)
-                clusters -= 1
-        return ArvMin
+    def kruskal()
