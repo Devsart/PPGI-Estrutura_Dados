@@ -26,7 +26,10 @@ ou
 dotnet run Program.cs <endereço do arquivo de dados>(opcional)
 ```
 
+No caso de Atividades feitas em Python, basta visualizar o jupyter notebook disponibilizado com os testes nas instâncias.
+Geralmente são os arquivos 'demo.ipynb'
+
 Requisitos:
  - .Net5
-
+ - Python
 
