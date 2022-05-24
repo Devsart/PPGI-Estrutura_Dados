@@ -92,17 +92,17 @@ class Graph:
                 nao_visitados, key=lambda node: distancia_inicio[node]
             )
             nao_visitados.remove(no_atual)
-
+            
             if distancia_inicio[no_atual] == INFINITY:
                 break
             
             for vizinho, distancia in self.adjacency_list[no_atual]:
-                if(distancia_inicio[vizinho] > distancia):
+                if((vizinho in nao_visitados) & (distancia_inicio[vizinho] > distancia)):
                     distancia_inicio[vizinho] = distancia
                     no_previo[vizinho] = no_atual
             
-            self.arvore.add((no_previo[no_atual], no_atual))
-            
+        for node in self.nodes:
+            self.arvore.add((no_previo[node],node))
         self.arvore.discard((None,'1'))
         return self.arvore
         
